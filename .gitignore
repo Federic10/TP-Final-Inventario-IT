@@ -5,3 +5,5 @@ data/
 venv/
 .DS_Store
 Thumbs.db
+node_modules/
+test-results/
