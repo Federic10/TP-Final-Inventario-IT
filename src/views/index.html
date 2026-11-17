@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventario IT | TP Final</title><link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<header><div class="marca">IT<span> / Inventario</span></div><span class="etiqueta">TP FINAL · GESTIÓN DE EQUIPOS</span></header>
+<main>
+  <p class="sobrelinea">ADMINISTRACIÓN DE INFRAESTRUCTURA</p>
+  <h1>Todo el inventario,<br>en un solo lugar.</h1>
+  <p class="descripcion">Registrá los equipos, organizalos por sector y mantené su estado actualizado.</p>
+  <div class="resumen"><article><span>Equipos registrados</span><strong id="total">0</strong></article><article><span>Operativos</span><strong id="operativos">0</strong></article><article><span>Sectores</span><strong id="total-sectores">0</strong></article></div>
+  <nav aria-label="Sección"><button class="tab activo" data-tab="equipos">Equipos</button><button class="tab" data-tab="sectores">Sectores</button></nav>
+  <p id="mensaje" role="status" aria-live="polite" hidden></p>
+  <section id="panel-equipos">
+    <div class="titulo"><h2>Equipos</h2><button id="nuevo-equipo">+ Nuevo equipo</button></div>
+    <div class="filtros"><label>Buscar<input id="buscar" type="search" placeholder="Inventario, nombre o sector"></label><label>Estado<select id="filtro-estado"><option value="">Todos los estados</option><option>Operativo</option><option>En reparación</option><option>De baja</option></select></label></div>
+    <div class="tabla"><table><thead><tr><th>Inventario</th><th>Equipo</th><th>Tipo</th><th>Sector</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="equipos"></tbody></table></div>
+  </section>
+  <section id="panel-sectores" hidden><div class="titulo"><h2>Sectores</h2><button id="nuevo-sector">+ Nuevo sector</button></div><p class="ayuda">Creá los sectores antes de asignar equipos. Para eliminar un sector, primero reasigná o eliminá sus equipos.</p><div class="tabla"><table><thead><tr><th>Nombre</th><th>Equipos asignados</th><th>Acciones</th></tr></thead><tbody id="sectores"></tbody></table></div></section>
+</main>
+<footer>Inventario IT · Python + SQLite · Federico Fabián Silva</footer>
+<dialog id="dialogo-equipo"><form id="form-equipo"><h2 id="titulo-equipo">Nuevo equipo</h2><input name="id" type="hidden"><div class="campos"><label>N.º de inventario<input name="inventario" maxlength="40" required placeholder="IT-001"></label><label>Nombre del equipo<input name="nombre" maxlength="80" required placeholder="PC-ADMIN-01"></label><label>Tipo<select name="tipo"><option>PC</option><option>Notebook</option><option>Servidor</option><option>Impresora</option><option>Otro</option></select></label><label>Estado<select name="estado"><option>Operativo</option><option>En reparación</option><option>De baja</option></select></label></div><label>Sector<select name="sector_id" id="sector-equipo" required></select></label><label>Observaciones<textarea name="observaciones" maxlength="500" rows="3"></textarea></label><p class="error-form" role="alert"></p><div class="acciones"><button type="button" class="secundario cancelar">Cancelar</button><button type="submit">Guardar equipo</button></div></form></dialog>
+<dialog id="dialogo-sector"><form id="form-sector"><h2 id="titulo-sector">Nuevo sector</h2><input name="id" type="hidden"><label>Nombre<input name="nombre" maxlength="80" required placeholder="Administración"></label><p class="error-form" role="alert"></p><div class="acciones"><button type="button" class="secundario cancelar">Cancelar</button><button type="submit">Guardar sector</button></div></form></dialog>
+</body></html>
